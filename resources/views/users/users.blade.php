@@ -9,7 +9,7 @@
         @if ( session('status') )
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 my-5">
                 <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-gray-800 dark:text-green-400" role="alert">
-                    <span class="font-medium">Success alert!</span> Change a few things up and try submitting again.
+                    <span class="font-medium">Success alert!</span> {{ session('status') }} 
                 </div>
             </div>
         @endif
@@ -43,8 +43,15 @@
                                     <td> {{ $user->name }} </td>
                                     <td class="text-center"> {{ $user->email }}</td>
                                     <td class="text-center">
-                                        <button class="rounded-full bg-sky-500 p-1 hover:bg-sky-700">Update</button>
-                                        <button class="rounded-full bg-sky-500 p-1 hover:bg-sky-700">Delete</button>
+                                        <a href="{{ url('/users/update/' . $user->id) }}">
+                                            <button class="rounded-full bg-sky-500 p-1 hover:bg-sky-700">Update</button>
+                                        </a>
+                                        <a href="{{ url('/users/password/' . $user->id) }}">
+                                            <button class="rounded-full bg-sky-500 p-1 hover:bg-sky-700">Password</button>
+                                        </a>
+                                        <a href="{{ url('/users/delete/' . $user->id) }}">
+                                            <button class="rounded-full bg-sky-500 p-1 hover:bg-sky-700">Delete</button>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
